@@ -1,10 +1,21 @@
 const express = require('express')
 const app = express()
-const port = 3000
-app.set('view engines', 'ejs')
+const dotenv = require('dotenv')
+dotenv.config()
+app.set('view engine', 'ejs')
+
+
+require("./models/mongoose.connect")
+
+let port = process.env.port
+
 
 app.get("/", (req, res) => {
-    res.sendFile("index")
+    res.render("index")
+})
+
+app.post("/details", (req, res)=> {
+
 })
 
 
