@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-const bodyparser = require("body-parser");
-app.use(bodyparser.urlencoded({ extended: true }));
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 const { default: mongoose, model } = require("mongoose");
 
 dotenv.config();
