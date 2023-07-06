@@ -27,6 +27,8 @@ app.post("/details", (req, res) => {
   console.log(req.body);
   form = new itemModel(req.body);
   form.save();
+
+  res.redirect('/')
 });
 
 app.listen(port, () => {
