@@ -20,15 +20,31 @@ const itemSchema = new mongoose.Schema({
 const itemModel = mongoose.model("Items", itemSchema);
 
 app.get("/", (req, res) => {
-  res.render("index");
+  
+  itemModel.find()
+  .then((response) => {
+    console.log(response)
+    res.render("index", {userInput: response});
+  }) 
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
 app.post("/details", (req, res) => {
   console.log(req.body);
   form = new itemModel(req.body);
-  form.save();
+  form.save()
 
-  res.redirect('/')
+  .then((response) => {
+    console.log(response)
+    res.redirect('/')
+
+  }) 
+  .catch((err) => {
+    console.log(err);
+  })
+
 });
 
 app.listen(port, () => {
